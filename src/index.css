@@ -10,6 +10,10 @@
     padding: 0;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body, #root {
     margin: 0;
     padding: 0;
@@ -21,10 +25,16 @@
     @apply font-sans;
     font-family: 'Montserrat', sans-serif;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+  }
+
+  img {
+    content-visibility: auto;
   }
 }
 

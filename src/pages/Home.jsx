@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import heroWeaverImg from '../assets/images/hero-weaver.webp'
 import artistImg from '../assets/images/iklima-babangida.jpg'
@@ -16,7 +16,7 @@ import clientNotesImg from '../assets/images/client-notes.webp'
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const galleryImages = [
+  const galleryImages = useMemo(() => [
     { id: 1, url: carousel1, alt: 'Gallery image 1' },
     { id: 2, url: carousel2, alt: 'Gallery image 2' },
     { id: 3, url: carousel3, alt: 'Gallery image 3' },
@@ -26,34 +26,34 @@ function Home() {
     { id: 7, url: carousel7, alt: 'Gallery image 7' },
     { id: 8, url: carousel8, alt: 'Gallery image 8' },
     { id: 9, url: carousel9, alt: 'Gallery image 9' }
-  ]
+  ], [])
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % galleryImages.length)
-  }
+  }, [galleryImages.length])
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
-  }
+  }, [galleryImages.length])
 
   return (
     <div className="home-page bg-dark text-white">
-      {/* Hero Section - starts from top, behind navbar */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-[88px] pt-[88px] md:-mt-[88px] md:pt-[88px]">
+      {/* Hero Section - starts from absolute top */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60">
-          <div 
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${heroWeaverImg})`,
-              filter: 'brightness(0.5)'
-            }}
+          <img
+            src={heroWeaverImg}
+            alt="Hero"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.5)' }}
+            loading="eager"
           />
         </div>
         
         {/* Soft blur transition at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark via-dark/80 to-transparent backdrop-blur-sm"></div>
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center pt-20 md:pt-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic text-white mb-12 leading-tight">
             Storytelling through light,
             <br />
@@ -89,6 +89,7 @@ function Home() {
                   src={artistImg}
                   alt="Iklima Babangida with her camera"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -126,6 +127,7 @@ function Home() {
                 src={carousel1}
                 alt="Durbar horseman leading a procession in northern Nigeria"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-6">
                 <h3 className="text-2xl font-serif text-white">Hawan Daushe</h3>
@@ -137,6 +139,7 @@ function Home() {
                 src={carousel5}
                 alt="Hands kneading clay bricks inside the Kano mud pit"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-6">
                 <h3 className="text-2xl font-serif text-white">Mud Pit in Kano</h3>
@@ -148,6 +151,7 @@ function Home() {
                 src={carousel8}
                 alt="Tarkwa market scene awash in golden morning light"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end p-6">
                 <h3 className="text-2xl font-serif text-white">Tarkwa Beach</h3>
@@ -175,6 +179,8 @@ function Home() {
                 src={galleryImages[currentSlide].url}
                 alt={galleryImages[currentSlide].alt}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -224,6 +230,7 @@ function Home() {
                     src={clientNotesImg}
                     alt="Traditional musician with ceremonial drum"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
               </div>

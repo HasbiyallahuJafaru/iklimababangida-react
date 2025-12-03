@@ -26,14 +26,15 @@ function Portfolio() {
 
   return (
     <div className="portfolio-page bg-black min-h-screen">
-      {/* Hero Section - starts from top, behind navbar */}
-      <section className="relative text-white py-32 overflow-hidden -mt-[88px] pt-[120px] md:-mt-[88px] md:pt-[120px]">
+      {/* Hero Section - starts from absolute top */}
+      <section className="relative text-white py-32 overflow-hidden pt-32">
         <div className="absolute inset-0">
           <img 
             src={portfolioHeaderImg}
             alt="Portfolio header"
             className="w-full h-full object-cover"
             style={{ filter: 'brightness(0.4)' }}
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
         </div>

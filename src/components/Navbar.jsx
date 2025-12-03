@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -7,25 +7,29 @@ function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
       }
     }
 
     // Check initial scroll position
     handleScroll()
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const isActive = (path) => location.pathname === path
+  const isActive = useCallback((path) => location.pathname === path, [location.pathname])
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
         ? 'bg-black/95 backdrop-blur-sm border-b border-white/10 shadow-lg' 
         : 'bg-transparent border-b border-transparent'

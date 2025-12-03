@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import aboutImg1 from '../assets/images/iklima-babangida-2.jpg'
 import aboutImg2 from '../assets/images/iklima-babangida-3.jpg'
 import cameraImg from '../assets/images/camera.jpg'
 
 function About() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const images = [aboutImg1, aboutImg2]
+  const images = useMemo(() => [aboutImg1, aboutImg2], [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,8 +17,8 @@ function About() {
 
   return (
     <div className="bg-black min-h-screen text-white">
-      {/* Main Content - starts from top, behind navbar */}
-      <section className="py-16 lg:py-24 -mt-[88px] pt-[104px] md:-mt-[88px] md:pt-[104px] lg:pt-[112px]">
+      {/* Main Content - starts from absolute top */}
+      <section className="py-16 lg:py-24 pt-24 lg:pt-32">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
@@ -32,6 +32,7 @@ function About() {
                     className={`w-full h-auto object-cover transition-opacity duration-1000 ${
                       index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
                     }`}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                   />
                 ))}
                 
