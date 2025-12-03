@@ -1,4 +1,20 @@
+import { useState, useEffect } from 'react'
+import aboutImg1 from '../assets/images/iklima babangida 2.jpg'
+import aboutImg2 from '../assets/images/iklima babangida 3.jpg'
+import cameraImg from '../assets/images/camera.jpg'
+
 function About() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const images = [aboutImg1, aboutImg2]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, 4000) // Change image every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [images.length])
+
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Main Content */}
@@ -8,11 +24,32 @@ function About() {
             {/* Image */}
             <div className="order-2 lg:order-1">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://placehold.co/600x800/1a1a1a/666?text=Profile+Image" 
-                  alt="Iklima Babangida"
-                  className="w-full h-auto object-cover"
-                />
+                {images.map((img, index) => (
+                  <img 
+                    key={index}
+                    src={img}
+                    alt={`Iklima Babangida ${index + 1}`}
+                    className={`w-full h-auto object-cover transition-opacity duration-1000 ${
+                      index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                    }`}
+                  />
+                ))}
+                
+                {/* Slideshow indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentImageIndex 
+                          ? 'bg-[#C5A572] w-8' 
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -106,7 +143,7 @@ function About() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 <div className="relative rounded-2xl overflow-hidden bg-[#252525] h-64 lg:h-80">
                   <img 
-                    src="https://placehold.co/600x400/252525/666?text=Fujifilm+X-T+Camera" 
+                    src={cameraImg}
                     alt="Fujifilm X-T Series Camera"
                     className="w-full h-full object-cover"
                   />
@@ -125,7 +162,7 @@ function About() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 <div className="relative rounded-2xl overflow-hidden bg-[#252525] h-64 lg:h-80 lg:order-2">
                   <img 
-                    src="https://placehold.co/600x400/252525/666?text=Fujinon+XF+Lens" 
+                    src="https://thecotswoldphotographer.com/wp-content/uploads/2025/08/Featured-image-compressed.webp" 
                     alt="Fujinon XF Prime Lens"
                     className="w-full h-full object-cover"
                   />

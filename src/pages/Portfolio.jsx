@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { portfolioService } from '../services/supabase'
+import portfolioHeaderImg from '../assets/images/portfolio_header.webp'
 
 function Portfolio() {
   const [portfolioItems, setPortfolioItems] = useState([])
@@ -34,8 +35,17 @@ function Portfolio() {
   return (
     <div className="portfolio-page bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#C5A572] to-[#8B7355] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative text-white py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={portfolioHeaderImg}
+            alt="Portfolio header"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.4)' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Portfolio</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
             Explore my collection of creative works

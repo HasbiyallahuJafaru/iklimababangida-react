@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import heroWeaverImg from '../assets/images/hero-weaver.webp'
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -29,11 +30,14 @@ function Home() {
           <div 
             className="w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: 'url(https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop)',
+              backgroundImage: `url(${heroWeaverImg})`,
               filter: 'brightness(0.5)'
             }}
           />
         </div>
+        
+        {/* Soft blur transition at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark via-dark/80 to-transparent backdrop-blur-sm"></div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif italic text-white mb-12 leading-tight">
@@ -54,20 +58,6 @@ function Home() {
           <svg className="w-6 h-6 text-gold" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
-        </div>
-      </section>
-
-      {/* Secondary Hero Image */}
-      <section className="py-20 bg-dark-light">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="relative aspect-[21/9] overflow-hidden rounded-sm">
-            <img 
-              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2083&auto=format&fit=crop"
-              alt="Weaver holding a spool of indigo thread beside the loom"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          </div>
         </div>
       </section>
 
