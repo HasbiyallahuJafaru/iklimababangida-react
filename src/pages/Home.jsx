@@ -1,17 +1,30 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import heroWeaverImg from '../assets/images/hero-weaver.webp'
+import artistImg from '../assets/images/iklima-babangida.jpg'
+import carousel1 from '../assets/images/carousel/carousel-1.webp'
+import carousel2 from '../assets/images/carousel/carousel-2.webp'
+import carousel3 from '../assets/images/carousel/carousel-3.webp'
+import carousel4 from '../assets/images/carousel/carousel-4.webp'
+import carousel5 from '../assets/images/carousel/carousel-5.webp'
+import carousel6 from '../assets/images/carousel/carousel-6.webp'
+import carousel7 from '../assets/images/carousel/carousel-7.webp'
+import carousel8 from '../assets/images/carousel/carousel-8.webp'
+import carousel9 from '../assets/images/carousel/carousel-9.webp'
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const galleryImages = [
-    { id: 1, alt: 'Durbar horseman leading the procession' },
-    { id: 2, alt: 'Close-up of a decorated Durbar horse' },
-    { id: 3, alt: 'Durbar riders in colorful regalia' },
-    { id: 4, alt: 'Kano weaver surrounded by vibrant textiles' },
-    { id: 5, alt: 'Hands kneading Kano clay into bricks' },
-    { id: 6, alt: 'Market bustle in Tarkwa' }
+    { id: 1, url: carousel1, alt: 'Gallery image 1' },
+    { id: 2, url: carousel2, alt: 'Gallery image 2' },
+    { id: 3, url: carousel3, alt: 'Gallery image 3' },
+    { id: 4, url: carousel4, alt: 'Gallery image 4' },
+    { id: 5, url: carousel5, alt: 'Gallery image 5' },
+    { id: 6, url: carousel6, alt: 'Gallery image 6' },
+    { id: 7, url: carousel7, alt: 'Gallery image 7' },
+    { id: 8, url: carousel8, alt: 'Gallery image 8' },
+    { id: 9, url: carousel9, alt: 'Gallery image 9' }
   ]
 
   const nextSlide = () => {
@@ -72,7 +85,7 @@ function Home() {
             <div className="order-2 lg:order-1">
               <div className="aspect-[3/4] bg-dark-lighter rounded-sm overflow-hidden">
                 <img 
-                  src="/src/assets/images/iklima babangida.jpg"
+                  src={artistImg}
                   alt="Iklima Babangida with her camera"
                   className="w-full h-full object-cover"
                 />
@@ -109,7 +122,7 @@ function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <Link to="/portfolio" className="group relative overflow-hidden rounded-sm aspect-[4/5]">
               <img 
-                src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=2069&auto=format&fit=crop"
+                src={carousel1}
                 alt="Durbar horseman leading a procession in northern Nigeria"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
@@ -120,7 +133,7 @@ function Home() {
 
             <Link to="/portfolio" className="group relative overflow-hidden rounded-sm aspect-[4/5]">
               <img 
-                src="https://images.unsplash.com/photo-1601001815894-4bb6c81416d7?q=80&w=2070&auto=format&fit=crop"
+                src={carousel5}
                 alt="Hands kneading clay bricks inside the Kano mud pit"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
@@ -131,7 +144,7 @@ function Home() {
 
             <Link to="/portfolio" className="group relative overflow-hidden rounded-sm aspect-[4/5]">
               <img 
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2074&auto=format&fit=crop"
+                src={carousel8}
                 alt="Tarkwa market scene awash in golden morning light"
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
@@ -158,7 +171,7 @@ function Home() {
           <div className="relative max-w-5xl mx-auto">
             <div className="aspect-[16/10] bg-dark-lighter rounded-sm overflow-hidden relative">
               <img 
-                src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=2069&auto=format&fit=crop"
+                src={galleryImages[currentSlide].url}
                 alt={galleryImages[currentSlide].alt}
                 className="w-full h-full object-cover"
               />

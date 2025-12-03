@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import aboutImg1 from '../assets/images/iklima babangida 2.jpg'
-import aboutImg2 from '../assets/images/iklima babangida 3.jpg'
+import aboutImg1 from '../assets/images/iklima-babangida-2.jpg'
+import aboutImg2 from '../assets/images/iklima-babangida-3.jpg'
 import cameraImg from '../assets/images/camera.jpg'
 
 function About() {
