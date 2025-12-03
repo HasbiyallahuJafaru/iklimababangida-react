@@ -44,18 +44,16 @@ function Contact() {
   }
 
   return (
-    <div className="contact-page relative min-h-screen pt-32 pb-20 text-white">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={durbarBgImg}
-          alt="Background"
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.3)' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
-      </div>
-      
+    <div 
+      className="contact-page relative min-h-screen pt-32 pb-20 text-white -mt-[88px]"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${durbarBgImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column */}

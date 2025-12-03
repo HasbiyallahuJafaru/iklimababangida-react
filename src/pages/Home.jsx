@@ -11,6 +11,7 @@ import carousel6 from '../assets/images/carousel/carousel-6.webp'
 import carousel7 from '../assets/images/carousel/carousel-7.webp'
 import carousel8 from '../assets/images/carousel/carousel-8.webp'
 import carousel9 from '../assets/images/carousel/carousel-9.webp'
+import clientNotesImg from '../assets/images/client-notes.webp'
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -37,9 +38,9 @@ function Home() {
 
   return (
     <div className="home-page bg-dark text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60">
+      {/* Hero Section - starts from top, behind navbar */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-[88px] pt-[88px]">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60">
           <div 
             className="w-full h-full bg-cover bg-center"
             style={{
@@ -82,7 +83,7 @@ function Home() {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            <div className="order-2 lg:order-1">
+            <div className="order-1 lg:order-1">
               <div className="aspect-[3/4] bg-dark-lighter rounded-sm overflow-hidden">
                 <img 
                   src={artistImg}
@@ -92,7 +93,7 @@ function Home() {
               </div>
             </div>
             
-            <div className="order-1 lg:order-2">
+            <div className="order-2 lg:order-2">
               <h3 className="text-4xl md:text-5xl font-serif text-white mb-6">Meet Iklima Babangida</h3>
               <p className="text-xl text-gray-300 italic mb-8 leading-relaxed">
                 Storytelling that lingers long after the shutter closes.
@@ -220,8 +221,8 @@ function Home() {
               <div className="lg:col-span-2">
                 <div className="aspect-square rounded-sm overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1610632380800-3f1473e83c90?q=80&w=2070&auto=format&fit=crop"
-                    alt="Durbar drummers performing in colorful traditional attire"
+                    src={clientNotesImg}
+                    alt="Traditional musician with ceremonial drum"
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -17,12 +17,12 @@ function About() {
 
   return (
     <div className="bg-black min-h-screen text-white">
-      {/* Main Content */}
-      <section className="py-16 lg:py-24">
+      {/* Main Content - starts from top, behind navbar */}
+      <section className="py-16 lg:py-24 -mt-[88px] pt-[104px] lg:pt-[112px]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
-            <div className="order-2 lg:order-1">
+            <div className="order-1 lg:order-1">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {images.map((img, index) => (
                   <img 
@@ -54,7 +54,7 @@ function About() {
             </div>
 
             {/* Bio Content */}
-            <div className="order-1 lg:order-2 space-y-8">
+            <div className="order-2 lg:order-2 space-y-8">
               {/* Behind the Lens Tag */}
               <div className="tracking-[0.3em] text-[#C5A572] text-sm font-light uppercase">
                 BEHIND THE LENS
