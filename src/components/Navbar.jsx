@@ -52,7 +52,7 @@ function Navbar() {
             </Link>
             <Link
               to="/portfolio"
-              className="bg-gold text-dark px-6 py-2.5 rounded-sm text-sm uppercase tracking-wider font-semibold hover:bg-gold-light transition-all duration-300"
+              className="bg-gold text-dark px-6 py-2.5 rounded-full text-sm uppercase tracking-wider font-semibold hover:bg-gold-light transition-all duration-300"
             >
               View Portfolio →
             </Link>

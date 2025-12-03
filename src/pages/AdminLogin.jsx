@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { authService } from '../services/supabase'
 
 function AdminLogin() {
   const [credentials, setCredentials] = useState({
@@ -25,38 +26,60 @@ function AdminLogin() {
     setError('')
 
     try {
-      // This will be implemented with Supabase authentication
-      // For now, simulating login
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log('Attempting login...')
+      
+      // Sign in with Supabase
+      const { session, user } = await authService.signIn(
+        credentials.email,
+        credentials.password
+      )
 
-      // Simulate successful login
-      localStorage.setItem('isAdmin', 'true')
-      navigate('/admin/dashboard')
+      console.log('Login response:', { session, user })
+
+      if (session && user) {
+        // Store admin status in localStorage
+        localStorage.setItem('isAdmin', 'true')
+        localStorage.setItem('adminSession', JSON.stringify(session))
+        
+        // Navigate to dashboard
+        navigate('/admin/dashboard')
+      } else {
+        setError('Authentication failed. Please try again.')
+      }
     } catch (err) {
-      setError('Invalid credentials. Please try again.')
+      console.error('Login error:', err)
+      
+      // Provide more specific error messages
+      if (err.message?.includes('fetch')) {
+        setError('Connection error. Please check your internet connection and try again.')
+      } else if (err.message?.includes('Invalid')) {
+        setError('Invalid email or password. Please try again.')
+      } else {
+        setError(err.message || 'Login failed. Please try again.')
+      }
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <div className="admin-login min-h-screen bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center p-4">
+    <div className="admin-login min-h-screen bg-dark flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo/Title */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">Admin Portal</h1>
-          <p className="text-purple-100">Iklima Babangida Portfolio</p>
+          <h1 className="text-4xl font-serif italic text-white mb-2">Admin Portal</h1>
+          <p className="text-gold uppercase tracking-widest text-sm">Iklima Babangida Portfolio</p>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white rounded-lg shadow-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Sign In</h2>
+        <div className="bg-[#111] border border-white/10 rounded-3xl p-8 shadow-2xl">
+          <h2 className="text-2xl font-serif text-white mb-6 text-center">Sign In</h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-gray-700 mb-2"
+                className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3"
               >
                 Email Address
               </label>
@@ -67,7 +90,7 @@ function AdminLogin() {
                 value={credentials.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition"
+                className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-4 text-white focus:border-gold focus:outline-none transition-colors"
                 placeholder="admin@example.com"
               />
             </div>
@@ -75,7 +98,7 @@ function AdminLogin() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-gray-700 mb-2"
+                className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3"
               >
                 Password
               </label>
@@ -86,13 +109,13 @@ function AdminLogin() {
                 value={credentials.password}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition"
+                className="w-full bg-[#1a1a1a] border border-white/10 rounded-lg px-4 py-4 text-white focus:border-gold focus:outline-none transition-colors"
                 placeholder="••••••••"
               />
             </div>
 
             {error && (
-              <div className="p-4 bg-red-100 text-red-700 rounded-lg">
+              <div className="p-4 bg-red-900/30 text-red-400 rounded-lg text-sm text-center">
                 {error}
               </div>
             )}
@@ -100,7 +123,7 @@ function AdminLogin() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gold text-dark px-6 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-gold-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -132,15 +155,15 @@ function AdminLogin() {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <a href="/" className="text-purple-600 hover:text-purple-800 text-sm">
+          <div className="mt-8 text-center">
+            <a href="/" className="text-gray-500 hover:text-gold transition-colors text-sm uppercase tracking-wider">
               ← Back to Website
             </a>
           </div>
         </div>
 
         {/* Security Notice */}
-        <div className="mt-6 text-center text-white text-sm">
+        <div className="mt-6 text-center text-gray-600 text-xs uppercase tracking-widest">
           <p>🔒 Secure Admin Access Only</p>
         </div>
       </div>

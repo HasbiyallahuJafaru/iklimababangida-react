@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
+import { portfolioService } from '../services/supabase'
 
 function Portfolio() {
   const [portfolioItems, setPortfolioItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [selectedItem, setSelectedItem] = useState(null)
 
-  const categories = ['all', 'digital art', 'illustration', 'mixed media', 'photography']
+  const categories = ['all', 'Documentary', 'Portrait', 'Culture', 'Street', 'Landscape', 'Event']
 
   useEffect(() => {
     loadPortfolio()
@@ -14,38 +14,14 @@ function Portfolio() {
 
   const loadPortfolio = async () => {
     try {
-      // This will be implemented with Supabase integration
-      // For now, using placeholder data
-      const placeholderItems = [
-        {
-          id: 1,
-          title: 'Project One',
-          category: 'digital art',
-          description: 'Description of project one',
-          imageUrl: '',
-          featured: true
-        },
-        {
-          id: 2,
-          title: 'Project Two',
-          category: 'illustration',
-          description: 'Description of project two',
-          imageUrl: '',
-          featured: false
-        },
-        {
-          id: 3,
-          title: 'Project Three',
-          category: 'mixed media',
-          description: 'Description of project three',
-          imageUrl: '',
-          featured: true
-        }
-      ]
-      setPortfolioItems(placeholderItems)
+      console.log('Loading portfolio items...')
+      const items = await portfolioService.getAll()
+      console.log('Portfolio items loaded:', items)
+      setPortfolioItems(items || [])
       setLoading(false)
     } catch (error) {
       console.error('Error loading portfolio:', error)
+      alert('Failed to load portfolio. Please check your connection.')
       setLoading(false)
     }
   }
@@ -55,29 +31,20 @@ function Portfolio() {
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === selectedCategory)
 
-  const openModal = (item) => {
-    setSelectedItem(item)
-  }
-
-  const closeModal = () => {
-    setSelectedItem(null)
-  }
-
   return (
-    <div className="portfolio-page">
+    <div className="portfolio-page bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-20">
+      <section className="bg-gradient-to-br from-[#C5A572] to-[#8B7355] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Portfolio</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-            Explore my collection of creative works spanning various mediums and
-            styles
+            Explore my collection of creative works
           </p>
         </div>
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-white sticky top-16 z-40 shadow-md">
+      <section className="py-8 bg-black/95 sticky top-16 z-40 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
@@ -86,8 +53,8 @@ function Portfolio() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full font-semibold transition ${
                   selectedCategory === category
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-[#C5A572] text-black'
+                    : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
                 }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -97,57 +64,89 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* Portfolio Grid */}
+      {/* Portfolio Sections */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           {loading ? (
             <div className="text-center py-20">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
-              <p className="mt-4 text-gray-600">Loading portfolio...</p>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#C5A572]"></div>
+              <p className="mt-4 text-gray-400">Loading portfolio...</p>
             </div>
           ) : filteredItems.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="space-y-24">
               {filteredItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="group cursor-pointer"
-                  onClick={() => openModal(item)}
-                >
-                  <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
-                    {/* Image Placeholder */}
-                    <div className="h-80 bg-gray-300 group-hover:scale-110 transition-transform duration-300">
-                      {item.imageUrl && (
-                        <img
-                          src={item.imageUrl}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                        />
+                <div key={item.id} className="space-y-8">
+                  {/* Title and Description */}
+                  <div className="max-w-4xl">
+                    <div className="flex items-center gap-4 mb-4">
+                      <h2 className="text-4xl md:text-5xl font-bold text-white">
+                        {item.title}
+                      </h2>
+                      {item.category && (
+                        <span className="px-4 py-1 bg-[#C5A572]/20 text-[#C5A572] rounded-full text-sm font-semibold uppercase border border-[#C5A572]/30">
+                          {item.category}
+                        </span>
                       )}
                     </div>
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                        <p className="text-sm uppercase tracking-wide text-purple-300">
-                          {item.category}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Featured Badge */}
-                    {item.featured && (
-                      <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Featured
+                    
+                    {(item.content || item.story) && (
+                      <p className="text-gray-300 text-lg leading-relaxed">
+                        {item.content || item.story}
+                      </p>
+                    )}
+                    
+                    {/* Meta Information */}
+                    {(item.location || item.date) && (
+                      <div className="flex flex-wrap gap-6 mt-4 text-sm text-gray-400">
+                        {item.location && (
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {item.location}
+                          </div>
+                        )}
+                        {item.date && (
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
+
+                  {/* Images Grid */}
+                  {item.images && item.images.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {item.images.map((imageUrl, index) => (
+                        <div 
+                          key={index} 
+                          className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-[#C5A572]/50 transition-all duration-300"
+                        >
+                          <img
+                            src={imageUrl}
+                            alt={`${item.title} - Image ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Divider */}
+                  <div className="border-t border-white/10 pt-8" />
                 </div>
               ))}
             </div>
           ) : (
             <div className="text-center py-20">
-              <p className="text-gray-600 text-xl">
+              <p className="text-gray-400 text-xl">
                 No portfolio items found in this category.
               </p>
             </div>
@@ -155,98 +154,18 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* Modal */}
-      {selectedItem && (
-        <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={closeModal}
-        >
-          <div
-            className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition"
-              aria-label="Close modal"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            {/* Modal Content */}
-            <div className="p-8">
-              <div className="mb-6">
-                <div className="h-96 bg-gray-300 rounded-lg mb-6">
-                  {selectedItem.imageUrl && (
-                    <img
-                      src={selectedItem.imageUrl}
-                      alt={selectedItem.title}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-3xl font-bold">{selectedItem.title}</h2>
-                  <span className="px-4 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold uppercase">
-                    {selectedItem.category}
-                  </span>
-                </div>
-
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  {selectedItem.description}
-                </p>
-
-                {/* Additional Details */}
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-xl font-bold mb-4">Project Details</h3>
-                  <div className="grid grid-cols-2 gap-4 text-gray-600">
-                    <div>
-                      <span className="font-semibold">Category:</span>{' '}
-                      {selectedItem.category}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Date:</span> [Date]
-                    </div>
-                    <div>
-                      <span className="font-semibold">Medium:</span> [Medium]
-                    </div>
-                    <div>
-                      <span className="font-semibold">Client:</span> [Client]
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white/5 border-t border-white/10">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Interested in My Work?</h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            I'm available for commissions, collaborations, and exhibitions.
+          <h2 className="text-4xl font-bold mb-6 text-white">Interested in My Work?</h2>
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            I&apos;m available for commissions, collaborations, and exhibitions.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
+            className="inline-block bg-[#C5A572] hover:bg-[#d4b885] text-black px-8 py-3 rounded-full font-semibold transition-all"
           >
-            Let's Talk
+            Let&apos;s Talk
           </a>
         </div>
       </section>

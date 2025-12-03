@@ -1,241 +1,156 @@
 function About() {
   return (
-    <div className="about-page">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">About Me</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-            Visual Artist • Creative Director • Storyteller
-          </p>
-        </div>
-      </section>
-
+    <div className="bg-black min-h-screen text-white">
       {/* Main Content */}
-      <section className="py-16">
+      <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
             <div className="order-2 lg:order-1">
-              <div className="h-96 lg:h-[500px] bg-gray-300 rounded-lg shadow-lg"></div>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://placehold.co/600x800/1a1a1a/666?text=Profile+Image" 
+                  alt="Iklima Babangida"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
 
-            {/* Bio */}
-            <div className="order-1 lg:order-2">
-              <h2 className="text-4xl font-bold mb-6">Who I Am</h2>
-              <div className="space-y-4 text-lg text-gray-700">
+            {/* Bio Content */}
+            <div className="order-1 lg:order-2 space-y-8">
+              {/* Behind the Lens Tag */}
+              <div className="tracking-[0.3em] text-[#C5A572] text-sm font-light uppercase">
+                BEHIND THE LENS
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
+                Iklima Babangida — Visual storytelling rooted in heritage.
+              </h1>
+
+              {/* Bio Paragraphs */}
+              <div className="space-y-6 text-gray-300 text-base md:text-lg leading-relaxed">
                 <p>
-                  Hello! I'm Iklima Babangida, a visual artist based in [Location].
-                  My journey in art began [background story], and since then, I've
-                  been dedicated to creating work that resonates with people on a
-                  deeper level.
+                  Iklima Babangida is a visual storyteller whose work explores themes of identity, memory, tradition, womanhood, and personal freedom. Drawing from her Hausa-Fulani heritage in northern Nigeria, she blends documentary and creative storytelling to capture human experiences through a cultural lens.
                 </p>
+
                 <p>
-                  My artistic practice is rooted in exploring themes of identity,
-                  culture, and the human experience. I believe that art has the
-                  power to bridge gaps, spark conversations, and create meaningful
-                  connections between people from all walks of life.
+                  Influenced by her late grandmother&apos;s passion for photography, Iklima&apos;s work preserves cultural narratives while challenging stereotypes and fostering cross-cultural understanding. Her photography has appeared in the 9th edition of Abuja Photo Festival (2025), the +234 Art Exhibition in Lagos (2025), the Alárà Now Exhibition (2024), and Mindscapes of the North (Arts & Vibes × British Council, Lagos, 2024). She has also been published in <em>Ake Review &apos;24</em> (Embracing Identity).
                 </p>
-                <p>
-                  Through my work, I aim to tell stories that matter—stories that
-                  challenge perspectives, celebrate diversity, and inspire change.
-                  Each piece I create is a reflection of my commitment to using art
-                  as a tool for expression, education, and empowerment.
+
+                <p className="font-medium">
+                  Iklima is a proud member of Black Women Photographers.
                 </p>
               </div>
-            </div>
-          </div>
 
-          {/* Skills & Expertise */}
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Skills & Expertise
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-purple-600 mb-4">
-                  <svg
-                    className="w-12 h-12 mx-auto"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              {/* Connect Section */}
+              <div className="pt-6">
+                <div className="tracking-[0.2em] text-gray-400 text-xs uppercase mb-6">
+                  CONNECT WITH IKLIMA
+                </div>
+                
+                {/* Social Icons */}
+                <div className="flex gap-6">
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#C5A572] transition-colors duration-300"
+                    aria-label="Instagram"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-3">
-                  Digital Art
-                </h3>
-                <p className="text-gray-600 text-center">
-                  Creating stunning digital illustrations and artwork using
-                  industry-standard tools and techniques.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-purple-600 mb-4">
-                  <svg
-                    className="w-12 h-12 mx-auto"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  
+                  <a 
+                    href="https://twitter.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#C5A572] transition-colors duration-300"
+                    aria-label="Twitter/X"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-3">
-                  Mixed Media
-                </h3>
-                <p className="text-gray-600 text-center">
-                  Combining traditional and contemporary techniques to create
-                  unique, multi-layered artworks.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-purple-600 mb-4">
-                  <svg
-                    className="w-12 h-12 mx-auto"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-3">
-                  Creative Direction
-                </h3>
-                <p className="text-gray-600 text-center">
-                  Leading creative projects from concept to completion with a
-                  clear artistic vision.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Experience Timeline */}
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>
-            <div className="max-w-3xl mx-auto space-y-8">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-purple-600 font-bold">2020-Present</span>
-                </div>
-                <div className="flex-grow pl-8 border-l-2 border-purple-600">
-                  <h3 className="text-xl font-bold mb-2">
-                    Freelance Visual Artist
-                  </h3>
-                  <p className="text-gray-600">
-                    Working with various clients on creative projects, exhibitions,
-                    and commissions.
-                  </p>
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-purple-600 font-bold">2018-2020</span>
-                </div>
-                <div className="flex-grow pl-8 border-l-2 border-purple-600">
-                  <h3 className="text-xl font-bold mb-2">
-                    Creative Director
-                  </h3>
-                  <p className="text-gray-600">
-                    Led creative teams in developing visual content for brands and
-                    organizations.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-purple-600 font-bold">2015-2018</span>
-                </div>
-                <div className="flex-grow pl-8 border-l-2 border-purple-600">
-                  <h3 className="text-xl font-bold mb-2">Visual Designer</h3>
-                  <p className="text-gray-600">
-                    Created visual designs for digital and print media across
-                    various industries.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div className="mb-16">
-            <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold mb-2">
-                  Bachelor of Fine Arts
-                </h3>
-                <p className="text-purple-600 font-semibold mb-2">
-                  [University Name]
-                </p>
-                <p className="text-gray-600">
-                  Graduated [Year] • Specialized in Visual Arts and Design
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Awards & Recognition */}
-          <div>
-            <h2 className="text-4xl font-bold text-center mb-12">
-              Awards & Recognition
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-2">[Award Name]</h3>
-                <p className="text-purple-600 mb-2">[Year]</p>
-                <p className="text-gray-600">
-                  Recognition for outstanding contribution to visual arts.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-2">[Exhibition Name]</h3>
-                <p className="text-purple-600 mb-2">[Year]</p>
-                <p className="text-gray-600">
-                  Featured artist at prestigious art exhibition.
-                </p>
+              {/* CTA Button */}
+              <div className="pt-8">
+                <a
+                  href="/contact"
+                  className="inline-block border border-gray-600 text-white px-10 py-4 rounded-full font-light tracking-[0.2em] text-sm uppercase hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  LET&apos;S CREATE TOGETHER
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Want to Know More?</h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Feel free to reach out if you'd like to discuss collaborations,
-            commissions, or just want to chat about art.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-purple-700 transition"
-          >
-            Get in Touch
-          </a>
+      {/* Preferred Gear Section */}
+      <section className="py-16 lg:py-24 bg-[#1a1a1a]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            {/* Section Header */}
+            <div className="tracking-[0.3em] text-[#C5A572] text-sm font-light uppercase mb-12">
+              PREFERRED GEAR
+            </div>
+
+            {/* Gear Items */}
+            <div className="space-y-12">
+              {/* Fujifilm X-T Series */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="relative rounded-2xl overflow-hidden bg-[#252525] h-64 lg:h-80">
+                  <img 
+                    src="https://placehold.co/600x400/252525/666?text=Fujifilm+X-T+Camera" 
+                    alt="Fujifilm X-T Series Camera"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-serif">
+                    Fujifilm X-T Series Body
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    The camera body keeps that classic SLR silhouette with a centered viewfinder hump and dials begging to be turned. Manual shutter speed and ISO wheels live on the top plate, alongside tactile switches that invite intentional exposure decisions. Whether it&apos;s the X-T5, X-T4, or an older sibling, the Fujifilm X-T family delivers the hybrid ergonomics and timeless styling I love.
+                  </p>
+                </div>
+              </div>
+
+              {/* Fujinon XF Prime */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="relative rounded-2xl overflow-hidden bg-[#252525] h-64 lg:h-80 lg:order-2">
+                  <img 
+                    src="https://placehold.co/600x400/252525/666?text=Fujinon+XF+Lens" 
+                    alt="Fujinon XF Prime Lens"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center space-y-4 lg:order-1">
+                  <h3 className="text-3xl md:text-4xl font-serif">
+                    Fujinon XF Prime
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    A compact Fujinon XF prime stays glued to the mount—usually the weather-sealed XF 35mm f/2 R WR or its 23mm sibling. The lens renders crisp detail with smooth falloff, perfect for the cinematic storytelling I chase in every frame.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Button */}
+            <div className="text-center mt-16">
+              <a
+                href="/contact"
+                className="inline-block bg-[#C5A572] text-black px-12 py-4 rounded-full font-medium tracking-[0.2em] text-sm uppercase hover:bg-[#d4b885] transition-all duration-300"
+              >
+                CONTACT IKLIMA
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>

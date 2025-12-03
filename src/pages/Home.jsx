@@ -44,7 +44,7 @@ function Home() {
           
           <Link
             to="/portfolio"
-            className="inline-block bg-gold text-dark px-12 py-5 rounded-sm text-sm uppercase tracking-wider font-bold hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-block bg-gold text-dark px-12 py-5 rounded-full text-sm uppercase tracking-wider font-bold hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             View Portfolio
           </Link>
@@ -82,8 +82,8 @@ function Home() {
             <div className="order-2 lg:order-1">
               <div className="aspect-[3/4] bg-dark-lighter rounded-sm overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=2064&auto=format&fit=crop"
-                  alt="Iklima Babangida reviewing her camera settings outdoors"
+                  src="/src/assets/images/iklima babangida.jpg"
+                  alt="Iklima Babangida with her camera"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -95,14 +95,14 @@ function Home() {
                 Storytelling that lingers long after the shutter closes.
               </p>
               <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-                I'm tall enough that people always spot me first in a crowd, which is ironic considering I spend most of my time trying to disappear behind my camera. My name is Iklima, and I shoot stories from the north that refuse to be flattened into stereotypes. My grandmother left me her love for photography, though I never got to shoot alongside her. Now I carry that inheritance. I'm drawn to documentary work, the kind that sits with people long enough to see past the surface. Nature teaches me patience; people teach me to stay curious.
+                I&apos;m tall enough that people always spot me first in a crowd, which is ironic considering I spend most of my time trying to disappear behind my camera. My name is Iklima, and I shoot stories from the north that refuse to be flattened into stereotypes. My grandmother left me her love for photography, though I never got to shoot alongside her. Now I carry that inheritance. I&apos;m drawn to documentary work, the kind that sits with people long enough to see past the surface. Nature teaches me patience; people teach me to stay curious.
               </p>
               <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                I don't believe in the perfect shot. I believe in showing up, in the unrelenting return, in letting stories breathe on their own terms. My camera is just the excuse. The real work is in the walking, the watching, the refusal to look away.
+                I don&apos;t believe in the perfect shot. I believe in showing up, in the unrelenting return, in letting stories breathe on their own terms. My camera is just the excuse. The real work is in the walking, the watching, the refusal to look away.
               </p>
               <Link
                 to="/about"
-                className="inline-block border-2 border-gold text-gold px-10 py-4 rounded-sm text-sm uppercase tracking-wider font-semibold hover:bg-gold hover:text-dark transition-all duration-300"
+                className="inline-block border-2 border-gold text-gold px-10 py-4 rounded-full text-sm uppercase tracking-wider font-semibold hover:bg-gold hover:text-dark transition-all duration-300"
               >
                 Read the full story
               </Link>
@@ -154,7 +154,7 @@ function Home() {
           <div className="text-center">
             <Link
               to="/portfolio"
-              className="inline-block bg-transparent border-2 border-gold text-gold px-10 py-4 rounded-sm text-sm uppercase tracking-wider font-semibold hover:bg-gold hover:text-dark transition-all duration-300"
+              className="inline-block bg-transparent border-2 border-gold text-gold px-10 py-4 rounded-full text-sm uppercase tracking-wider font-semibold hover:bg-gold hover:text-dark transition-all duration-300"
             >
               Explore the full portfolio
             </Link>
@@ -226,7 +226,7 @@ function Home() {
               
               <div className="lg:col-span-3">
                 <blockquote className="text-2xl md:text-3xl font-serif text-white leading-relaxed italic">
-                  "She has found a way to capture our stories with pictures so that people see us for who we really are and the joys that give our lives meaning."
+                  &quot;She has found a way to capture our stories with pictures so that people see us for who we really are and the joys that give our lives meaning.&quot;
                 </blockquote>
               </div>
             </div>
@@ -238,12 +238,12 @@ function Home() {
       <section className="py-24 bg-dark border-t border-white/10">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl md:text-6xl font-serif text-white mb-6">
-            Let's create something cinematic
+            Let&apos;s create something cinematic
           </h2>
           <div className="mt-12">
             <Link
               to="/contact"
-              className="inline-block bg-gold text-dark px-12 py-5 rounded-sm text-sm uppercase tracking-wider font-bold hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-block bg-gold text-dark px-12 py-5 rounded-full text-sm uppercase tracking-wider font-bold hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Contact Iklima
             </Link>
