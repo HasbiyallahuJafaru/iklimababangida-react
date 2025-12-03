@@ -18,7 +18,7 @@ function About() {
   return (
     <div className="bg-black min-h-screen text-white">
       {/* Main Content - starts from top, behind navbar */}
-      <section className="py-16 lg:py-24 -mt-[88px] pt-[104px] lg:pt-[112px]">
+      <section className="py-16 lg:py-24 -mt-[88px] pt-[104px] md:-mt-[88px] md:pt-[104px] lg:pt-[112px]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}

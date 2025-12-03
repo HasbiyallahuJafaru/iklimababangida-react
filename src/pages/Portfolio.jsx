@@ -27,7 +27,7 @@ function Portfolio() {
   return (
     <div className="portfolio-page bg-black min-h-screen">
       {/* Hero Section - starts from top, behind navbar */}
-      <section className="relative text-white py-32 overflow-hidden -mt-[88px] pt-[120px]">
+      <section className="relative text-white py-32 overflow-hidden -mt-[88px] pt-[120px] md:-mt-[88px] md:pt-[120px]">
         <div className="absolute inset-0">
           <img 
             src={portfolioHeaderImg}

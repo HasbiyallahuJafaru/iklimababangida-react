@@ -39,7 +39,7 @@ function Home() {
   return (
     <div className="home-page bg-dark text-white">
       {/* Hero Section - starts from top, behind navbar */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-[88px] pt-[88px]">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-[88px] pt-[88px] md:-mt-[88px] md:pt-[88px]">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60">
           <div 
             className="w-full h-full bg-cover bg-center"

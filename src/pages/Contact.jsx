@@ -45,7 +45,7 @@ function Contact() {
 
   return (
     <div 
-      className="contact-page relative min-h-screen pt-32 pb-20 text-white -mt-[88px]"
+      className="contact-page relative min-h-screen pt-32 pb-20 text-white -mt-[88px] md:-mt-[88px]"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(${durbarBgImg})`,
         backgroundSize: 'cover',
